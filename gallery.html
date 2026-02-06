@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Memories 💖</title>
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #ffd6e8, #c77dff);
+  font-family: "Comic Sans MS", cursive;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1.2s ease;
+  padding: 2rem 1rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+h2 {
+  color: white;
+  margin: 1rem 0 2rem;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  text-shadow: 0 0 15px white;
+}
+
+/* Card container */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Individual card */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.85);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.35);
+}
+
+/* Image section */
+.card img {
+  width: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.card img:hover {
+  transform: scale(1.05);
+}
+
+/* Message section */
+.card .message {
+  padding: 1rem 1.2rem;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: #333;
+  min-height: 60px;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 20px;
+  animation: zoom 0.4s ease;
+}
+
+@keyframes zoom {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive tweaks */
+@media (min-width: 600px) {
+  .card {
+    flex-direction: row;
+  }
+  .card img {
+    width: 50%;
+    height: 100%;
+  }
+  .card .message {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h2>💖 Birthday Messages From Me 💖</h2>
+
+<div class="card-container">
+  <div class="card">
+    <img src="/images/1770369299794.jpg" alt="Memory 1">
+    <div class="message">🎂 HAPPY BIRTHDAY YA MAY PICTURE PA TAYO OH BINABATO MO PA PO AKO NG BULAK HAHAHAA🤣</div>
+  </div>
+
+  <div class="card">
+    <img src="images/1770369299766(0).jpg" alt="Memory 2">
+    <div class="message"> Eto po yung nag Subic Po Tayo Nakaka Miss Lang Po Kasi Bihira Lang Po Tayo Mag Sama Sama</div>
+  </div>
+
+  <div class="card">
+    <img src="/images/1770369299780.jpg" alt="Memory 3">
+    <div class="message">Eto pa yung kanya kanyang luto pa po to HAHAA kahit malamig laban</div>
+  </div>
+  
+      <div class="card">
+      <img src="/images/1770369349081.jpg" alt="Memory 3">
+      <div class="message">Tapos eto yung kahit umuulan laban lang walang papasok HAHAHAHA</div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img">
+</div>
+
+<script>
+const images = document.querySelectorAll(".card img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+// Open lightbox on image click
+images.forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    lightboxImg.src = img.src;
+  });
+});
+
+// Close lightbox
+lightbox.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
+</script>
+
+</body>
+</html>
